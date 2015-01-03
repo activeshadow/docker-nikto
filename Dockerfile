@@ -10,9 +10,10 @@ WORKDIR /opt
 
 RUN tar xzf /root/nikto-2.1.5.tar.gz \
         && rm /root/nikto-2.1.5.tar.gz \
-        && chmod +x /opt/nikto-2.1.5/nikto.pl \
-        && ln -s /opt/nikto-2.1.5/nikto.pl /usr/local/bin/nikto \
-        && cp /opt/nikto-2.1.5/nikto.conf /etc/ \
+        && mv nikto-2.1.5 nikto \
+        && chmod +x nikto/nikto.pl \
+        && ln -s /opt/nikto/nikto.pl /usr/local/bin/nikto \
+        && cp nikto/nikto.conf /etc/ \
         && nikto -update
 
 WORKDIR /root
